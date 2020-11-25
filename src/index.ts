@@ -3,7 +3,7 @@ import  express  from "express";
 import { shoppingRoutes } from "./routes/shopping.routes";
 const app = express();
 
-app.set('port', 4100);
+app.set('port', 4000);
 
 
 
