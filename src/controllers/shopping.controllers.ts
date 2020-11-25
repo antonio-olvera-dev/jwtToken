@@ -12,9 +12,6 @@ class ShoppingController {
 
     try {
 
-
-      // Products.belongsToMany(Clients, { through: "shopings", foreignKey: 'ProductsId', otherKey: 'ClientsId' });
-      // Clients.belongsToMany(Products, { through: "shopings", foreignKey: 'ClientsId', otherKey: 'ProductsId' });
   
 
       const shop = await Clients.findAll({
@@ -53,6 +50,25 @@ class ShoppingController {
   }
 
 
+  public async getKeys(req: Request, res: Response) {
+
+    try {
+
+
+
+      
+
+      const shop = await Shopings.create(req.body);
+
+      res.send(shop);
+
+    } catch (error) {
+
+      console.log(error);
+      res.send(error);
+    }
+
+  }
 
 
 
