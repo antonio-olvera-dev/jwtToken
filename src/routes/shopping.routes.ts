@@ -10,7 +10,8 @@ class ShoppingRoutes {
 
 
         this.router.get('/', shoppingController.getAll);
-        this.router.get('/keys', shoppingController.getKeys);
+        this.router.post('/getkey', shoppingController.getKeys);
+        this.router.post('/keys', shoppingController.getKeys);
         this.router.post('/', shoppingController.setProducts);
 
     }
