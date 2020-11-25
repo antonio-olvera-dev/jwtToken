@@ -1,14 +1,12 @@
 import { Model, DataTypes, Sequelize } from "sequelize";
 import { database } from "../databases";
-import { Roles } from "./role.model";
 
 
 
-export class Users extends Model {
+export class Roles extends Model {
 
     public id!: number;
     public name!: string;
-    public price!: number;
     public createdAt!: Date;
     public updateAt!: Date
 
@@ -17,7 +15,7 @@ export class Users extends Model {
 }
 
 
-Users.init({
+Roles.init({
 
     id: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -25,16 +23,12 @@ Users.init({
         autoIncrement: true,
         allowNull: false
     },
-    email: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
 
     },
-    password: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
 
-    },
 
     createdAt: {
         type: DataTypes.DATE,
@@ -52,9 +46,6 @@ Users.init({
 
 },
     {
-        tableName: 'users',
+        tableName: 'roles',
         sequelize: database
     });
-
-    
-    Users.belongsTo(Roles);

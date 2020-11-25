@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 
 
 import jwt from "jsonwebtoken"
+import { Users } from "../models/products.model";
 import  config  from "./../config/config.json";
 
 class ShoppingController {
@@ -21,12 +22,27 @@ class ShoppingController {
         
         );
      
-        
-        res.send(token);
+        const user:any = await Users.findAll( {
+            
+          where:{email:req.body.email, password:req.body.password}
+          ,raw:true}
+          );
 
-    
       
 
+      if (user[0].password === req.body.password && req.body.email ===user[0].email ) {
+        
+        res.send(token)
+        
+      } else {
+         // res.sendStatus(404)
+          console.log('error');
+          throw new Error("El usuario o contraseña son incorrectas");
+      }
+
+
+    
+    
     } catch (error) {
 
       console.log(error);

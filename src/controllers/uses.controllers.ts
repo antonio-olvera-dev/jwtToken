@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Users } from "../models/products.model";
+import { Roles } from "../models/role.model";
 
 class UsersController {
 
@@ -9,7 +10,9 @@ class UsersController {
     public async getUsers(req: Request, res: Response) {
 
         try {
-            const us = await Users.findAll( {raw:true});
+            const us = await Users.findAll( {raw:true,
+            include:Roles
+            });
             res.send(us)
         } catch (error) {
 
@@ -19,6 +22,20 @@ class UsersController {
 
     }
 
+    public async getUser(req: Request, res: Response) {
+
+        try {
+            const us = await Users.findAll( {raw:true,
+            include:Roles
+            });
+            res.send(us)
+        } catch (error) {
+
+            res.sendStatus(501);
+        }
+
+
+    }
 
 
 
