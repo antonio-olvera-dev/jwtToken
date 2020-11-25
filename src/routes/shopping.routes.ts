@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { shoppingController } from "../controllers/shopping.controllers";
+import { checkJwkt } from "../middlewares/checkJwt";
 
 
 class ShoppingRoutes {
@@ -9,10 +10,9 @@ class ShoppingRoutes {
     constructor() {
 
 
-        this.router.get('/', shoppingController.getAll);
-        this.router.post('/getkey', shoppingController.getKeys);
-        this.router.post('/keys', shoppingController.getKeys);
-        this.router.post('/', shoppingController.setProducts);
+        this.router.post('/', shoppingController.getKeys);
+
+
 
     }
 

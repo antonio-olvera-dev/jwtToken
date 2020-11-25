@@ -3,7 +3,7 @@ import { database } from "../databases";
 
 
 
-export class Products extends Model {
+export class Users extends Model {
 
     public id!: number;
     public name!: string;
@@ -16,20 +16,20 @@ export class Products extends Model {
 }
 
 
-Products.init({
+Users.init({
 
     id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: true
+        allowNull: false
     },
-    name: {
+    email: {
         type: DataTypes.STRING,
         allowNull: false,
 
     },
-    price: {
+    password: {
         type: DataTypes.INTEGER,
         allowNull: false,
 
@@ -51,6 +51,6 @@ Products.init({
 
 },
     {
-        tableName: 'products',
+        tableName: 'users',
         sequelize: database
     });
